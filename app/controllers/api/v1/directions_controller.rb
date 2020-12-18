@@ -1,4 +1,4 @@
-class DirectionsController < ApplicationController
+class Api::V1::DirectionsController < ApplicationController
   before_action :set_direction, only: [:show, :update, :destroy]
 
   # GET /directions

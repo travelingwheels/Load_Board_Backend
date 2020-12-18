@@ -1,4 +1,4 @@
-class LoadsController < ApplicationController
+class Api::V1::LoadsController < ApplicationController
   before_action :set_load, only: [:show, :update, :destroy]
 
   # GET /loads
