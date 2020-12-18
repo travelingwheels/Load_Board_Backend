@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :diection
+  belongs_to :direction
 end
