@@ -5,12 +5,12 @@ class Api::V1::LoadsController < ApplicationController
   def index
     @loads = Load.all
 
-    render json: @loads
+    render json: LoadSerializer.new(@loads).serialized_json
   end
 
   # GET /loads/1
   def show
-    render json: @load
+    render json: LoadSerializer.new(@load).serialized_json
   end
 
   # POST /loads
