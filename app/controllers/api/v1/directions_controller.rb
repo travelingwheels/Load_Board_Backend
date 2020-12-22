@@ -5,12 +5,12 @@ class Api::V1::DirectionsController < ApplicationController
   def index
     @directions = Direction.all
 
-    render json: @directions
+    render json: DirectionSerializer.new(@directions).serialized_json
   end
 
   # GET /directions/1
   def show
-    render json: @direction
+    render json: DirectionSerializer.new(@direction).serialized_json
   end
 
   # POST /directions
