@@ -3,9 +3,15 @@ class Api::V1::LoadsController < ApplicationController
 
   # GET /loads
   def index
-    @loads = Load.all
+    if  logged_in?
+    @loads = current_user.loads
 
     render json: LoadSerializer.new(@loads).serialized_json
+    else
+      render json: {
+        error: "You must be logged in to see loads"
+      }
+    end
   end
 
   # GET /loads/1
