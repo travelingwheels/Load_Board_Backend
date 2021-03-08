@@ -3,9 +3,15 @@ class Api::V1::DirectionsController < ApplicationController
 
   # GET /directions
   def index
-    @directions = Direction.all
+    if  logged_in?
+      @directions = current_user.directions
 
     render json: DirectionSerializer.new(@directions).serialized_json
+    else
+      render json: {
+        error: "Cannot see directions unless your logged in"
+      }
+    end
   end
 
   # GET /directions/1
@@ -41,7 +47,7 @@ class Api::V1::DirectionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_direction
-      @direction = Direction.find(params[:id])
+      @direction = Direction.find_by_id(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
