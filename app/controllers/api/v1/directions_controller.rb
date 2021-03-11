@@ -1,5 +1,5 @@
 class Api::V1::DirectionsController < ApplicationController
-  before_action :set_direction, only: [:show, :update, :destroy]
+  before_action :set_direction, only: [:show]
 
   # GET /directions
   def index
@@ -19,30 +19,6 @@ class Api::V1::DirectionsController < ApplicationController
     render json: DirectionSerializer.new(@direction).serialized_json
   end
 
-  # POST /directions
-  def create
-    @direction = Direction.new(direction_params)
-
-    if @direction.save
-      render json: @direction, status: :created, location: @direction
-    else
-      render json: @direction.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /directions/1
-  def update
-    if @direction.update(direction_params)
-      render json: @direction
-    else
-      render json: @direction.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /directions/1
-  def destroy
-    @direction.destroy
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

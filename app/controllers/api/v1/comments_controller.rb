@@ -14,7 +14,7 @@ class Api::V1::CommentsController < ApplicationController
     end
   end
 
-  # GET /comments/1(2)
+  # GET /comments/1
   def show
     render json: CommentSerializer.new(@comment)
   end

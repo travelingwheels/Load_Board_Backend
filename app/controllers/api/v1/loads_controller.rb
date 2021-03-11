@@ -1,5 +1,5 @@
 class Api::V1::LoadsController < ApplicationController
-  before_action :set_load, only: [:show, :update, :destroy]
+  before_action :set_load, only: [:show]
 
   # GET /loads
   def index
@@ -19,30 +19,6 @@ class Api::V1::LoadsController < ApplicationController
     render json: LoadSerializer.new(@load).serialized_json
   end
 
-  # POST /loads
-  def create
-    @load = Load.new(load_params)
-
-    if @load.save
-      render json: @load, status: :created, location: @load
-    else
-      render json: @load.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /loads/1
-  def update
-    if @load.update(load_params)
-      render json: @load
-    else
-      render json: @load.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /loads/1
-  def destroy
-    @load.destroy
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
